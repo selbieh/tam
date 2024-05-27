@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<h2>{{ contact.name }}</h2>
+<h3>Phone Numbers:</h3>
+{% if contact.phone_numbers.all %}
+<ul>
+  {% for phone_number in contact.phone_numbers.all %}
+  <li>{{ phone_number.number }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No phone numbers found.</p>
+{% endif %}
+
+<a
+  href="{% url 'contacts:phone_number_create' contact.id %}"
+  class="btn btn-primary"
+  >Add Phone Number</a
+>
+{% endblock %}
